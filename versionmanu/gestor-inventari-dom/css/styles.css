@@ -1,0 +1,494 @@
+/* ==========================================================
+   Gestor d'Inventari
+   Desenvolupament Front-end amb JavaScript
+========================================================== */
+
+
+/* ==========================================================
+   Variables
+========================================================== */
+
+:root {
+
+    --color-primary: #003b70;
+    --color-primary-hover: #005ca8;
+
+    --color-success: #2e7d32;
+    --color-success-hover: #256628;
+
+    --color-danger: #d32f2f;
+    --color-danger-hover: #b71c1c;
+
+    --background: #f5f7fa;
+    --surface: #ffffff;
+
+    --text: #222;
+    --text-light: #666;
+
+    --border: #d9dee3;
+
+    --radius: 10px;
+
+    --shadow: 0 4px 12px rgba(0,0,0,.08);
+
+}
+
+
+/* ==========================================================
+   Reset
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* ==========================================================
+   Body
+========================================================== */
+
+body{
+
+    font-family:'Space Grotesk',sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.header{
+
+    background:var(--color-primary);
+
+    color:white;
+
+    text-align:center;
+
+    padding:2.5rem 2rem;
+
+}
+
+.header h1{
+
+    margin-bottom:.5rem;
+
+}
+
+.header p{
+
+    opacity:.75;
+
+}
+
+
+/* ==========================================================
+   Main
+========================================================== */
+
+.contenidor{
+
+    width:min(1100px,92%);
+
+    margin:2rem auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2rem;
+
+}
+
+
+/* ==========================================================
+   Cards
+========================================================== */
+
+.card{
+
+    background:var(--surface);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:1.5rem;
+
+}
+
+.card h2{
+
+    margin-bottom:1rem;
+
+    color:var(--color-primary);
+
+}
+
+
+/* ==========================================================
+   Formulari
+========================================================== */
+
+.formulari{
+
+    display:grid;
+
+    grid-template-columns:
+        2fr
+        120px
+        120px
+        auto;
+
+    gap:1rem;
+
+}
+
+.formulari input, #inputBuscar{
+
+    padding:.85rem;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    font-size:1rem;
+
+    outline:none;
+
+}
+
+.formulari input:focus, #inputBuscar:focus{
+
+    border-color:var(--color-primary);
+
+}
+
+
+/* ==========================================================
+   Botons
+========================================================== */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:8px;
+
+    padding:.85rem 1.2rem;
+
+    background:var(--color-primary);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+button:hover{
+
+    background:var(--color-primary-hover);
+
+}
+
+
+/* ==========================================================
+   Capçalera inventari
+========================================================== */
+
+.capcalera{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:1.5rem;
+
+}
+
+
+.accions-superiors{
+
+    display:flex;
+
+    gap:.75rem;
+
+}
+
+
+/* ==========================================================
+   Inventari
+========================================================== */
+
+#llistaInventari{
+
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1rem;
+
+}
+
+
+.producte{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:1rem;
+
+    padding:1rem;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    transition:.2s;
+
+}
+
+.producte:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+
+/* ==========================================================
+   Informació producte
+========================================================== */
+
+.info{
+
+    display:flex;
+
+    gap:2rem;
+
+    flex:1;
+
+}
+
+.nom{
+
+    flex:2;
+
+    font-weight:600;
+
+}
+
+.stock{
+
+    width:100px;
+
+}
+
+.preu{
+
+    width:120px;
+
+}
+
+
+/* ==========================================================
+   Accions
+========================================================== */
+
+.accions{
+
+    display:flex;
+
+    gap:.5rem;
+
+}
+
+
+.btn-descompte{
+
+    background:var(--color-success);
+
+}
+
+.btn-descompte:hover{
+
+    background:var(--color-success-hover);
+
+}
+
+
+.btn-eliminar{
+
+    background:var(--color-danger);
+
+}
+
+.btn-eliminar:hover{
+
+    background:var(--color-danger-hover);
+
+}
+
+
+/* ==========================================================
+   Missatge buit
+========================================================== */
+
+.buit{
+
+    text-align:center;
+
+    color:var(--text-light);
+
+    padding:2rem;
+
+    font-style:italic;
+
+}
+
+
+/* ==========================================================
+   Estadístiques
+========================================================== */
+
+#estadistiques{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    gap:1rem;
+
+}
+
+
+#estadistiques p{
+
+    flex:1;
+
+    text-align:center;
+
+    background:#eef2f6;
+
+    padding:1rem;
+
+    border-radius:8px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================================
+   Footer
+========================================================== */
+
+.footer{
+
+    margin-top:auto;
+
+    text-align:center;
+
+    padding:1.5rem;
+
+    color:var(--text-light);
+
+}
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media(max-width:900px){
+
+    .formulari{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .capcalera{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:1rem;
+
+    }
+
+    .accions-superiors{
+
+        width:100%;
+
+        flex-wrap:wrap;
+
+    }
+
+    .producte{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .info{
+
+        flex-direction:column;
+
+        gap:.4rem;
+
+    }
+
+    .stock,
+    .preu{
+
+        width:auto;
+
+    }
+
+    .accions{
+
+        width:100%;
+
+    }
+
+    .accions button{
+
+        flex:1;
+
+    }
+
+    #estadistiques{
+
+        flex-direction:column;
+
+    }
+
+}

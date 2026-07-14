@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ca">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestor d'Inventari</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+
+        <!-- ===================================================
+            Header
+        ==================================================== -->
+        <header class="header">
+            <h1>📦 Gestor d'Inventari</h1>
+            <p>Aplicació desenvolupada amb HTML, CSS i JavaScript</p>
+        </header>
+
+
+        <!-- ===================================================
+            Main
+        ==================================================== -->
+        <main class="contenidor">
+
+            <!-- ===============================================
+                Nou producte
+            ================================================ -->
+            <section class="card">
+                <h2>Nou producte</h2>
+                <form class="formulari" id="formulari">
+
+                    <input type="text" id="inputNom" placeholder="Nom del producte" aria-label="Nom del producte" autocomplete="off">
+                    <input type="number" id="inputStock" placeholder="Stock" aria-label="Stock" autocomplete="off" min="0" step="1">
+                    <input type="number" id="inputPreu" placeholder="Preu (€)" aria-label="Preu" step="0.01" autocomplete="off" min="0">
+
+                    <button type="button" id="btnAfegir">➕ Afegir producte</button>
+                </form>
+            </section>
+
+
+            <!-- ===============================================
+                Inventari
+            ================================================ -->
+            <section class="card">
+
+                <div class="capcalera">
+                    <h2>Inventari</h2>
+                    <div class="accions-superiors">
+                        <input type="text" id="inputBuscar" placeholder="Buscar producte..." aria-label="Buscar producte" autocomplete="off">
+                        <button id="btnBuscar">🔍 Buscar</button>
+                        <button id="btnStockBaix">📉 Stock baix</button>
+                    </div>
+                </div>
+
+                <ul id="llistaInventari"> <!-- Llista d'articles de l'inventari --> </ul>
+            </section>
+
+
+            <!-- ===============================================
+                Estadístiques
+            ================================================ -->
+            <section class="card">
+                <h2>Estadístiques</h2>
+                <div id="estadistiques"> <!-- Estadístiques de l'inventari --> </div>
+            </section>
+        </main>
+
+
+        <!-- ===================================================
+            Footer
+        ==================================================== -->
+        <footer class="footer">
+
+            <p>Desenvolupament Front-end amb JavaScript / IA</p>
+
+        </footer>
+
+        <!-- Mis scripts -->
+        <script src="js/main.js"></script>
+    </body>
+</html>
