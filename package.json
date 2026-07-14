@@ -1,0 +1,21 @@
+{
+  "name": "gestor-inventari-objetos",
+  "version": "1.0.0",
+  "description": "Gestor d'inventari en Node.js amb un array d'objectes",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "inventari",
+    "objectes",
+    "node"
+  ],
+  "author": "Rociogoye",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
