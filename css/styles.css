@@ -1,0 +1,368 @@
+/* ==========================================================
+   Gestor d'Inventari — estil basat en gestor-tasques-dom
+========================================================== */
+
+:root {
+    --color-primary: #003b70;
+    --color-primary-hover: #005ca8;
+    --color-success: #2e7d32;
+    --color-success-soft: #eef8ef;
+    --color-danger: #d32f2f;
+    --color-danger-hover: #b71c1c;
+    --color-warning: #9a6700;
+    --color-warning-soft: #fff8df;
+    --background: #f5f7fa;
+    --surface: #ffffff;
+    --text: #222222;
+    --text-light: #666666;
+    --border: #d9dee3;
+    --radius: 10px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.header {
+    padding: 2.5rem 2rem;
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: .6rem;
+    font-size: clamp(1.8rem, 5vw, 2.3rem);
+}
+
+.header p {
+    opacity: .75;
+    font-size: 1rem;
+}
+
+.contenidor {
+    width: min(1000px, 90%);
+    margin: 2rem auto;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.card {
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.formulari,
+.eines,
+.descompte,
+.capcalera {
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+}
+
+.camp {
+    min-width: 125px;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+.camp-nom,
+.cerca {
+    flex: 1;
+}
+
+label {
+    color: var(--text-light);
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: .85rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    font: inherit;
+}
+
+input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 59, 112, .1);
+}
+
+button {
+    min-height: 47px;
+    padding: .85rem 1.3rem;
+    border: 0;
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-size: .95rem;
+    font-weight: 600;
+    transition: .2s;
+}
+
+button:hover {
+    background: var(--color-primary-hover);
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(0, 92, 168, .3);
+    outline-offset: 2px;
+}
+
+.btn-secundari.actiu {
+    background: var(--color-warning);
+}
+
+.btn-neutre {
+    background: #64748b;
+}
+
+.btn-neutre:hover {
+    background: #475569;
+}
+
+.capcalera {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.capcalera h2 {
+    margin-bottom: 0;
+}
+
+.eines {
+    align-items: end;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #f9fafb;
+}
+
+.descompte {
+    align-items: end;
+}
+
+.descompte .camp {
+    width: 145px;
+}
+
+.resum-filtre {
+    min-height: 1.3rem;
+    margin: 1rem 0;
+    color: var(--text-light);
+    font-size: .9rem;
+}
+
+.llista-productes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+.producte {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) auto auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: .2s;
+}
+
+.producte:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.producte.stock-baix {
+    border-color: #e8c96a;
+    background: var(--color-warning-soft);
+}
+
+.nom-producte {
+    font-weight: 700;
+}
+
+.detall {
+    color: var(--text-light);
+    font-size: .95rem;
+    white-space: nowrap;
+}
+
+.detall strong {
+    color: var(--text);
+}
+
+.preu-original {
+    margin-right: .35rem;
+    color: var(--text-light);
+    font-size: .82rem;
+    text-decoration: line-through;
+}
+
+.etiqueta-stock {
+    display: inline-block;
+    margin-left: .35rem;
+    padding: .18rem .45rem;
+    border-radius: 999px;
+    background: #f5d778;
+    color: #684500;
+    font-size: .72rem;
+    font-weight: 700;
+}
+
+.btn-eliminar {
+    min-width: 47px;
+    padding: .75rem;
+    background: var(--color-danger);
+}
+
+.btn-eliminar:hover {
+    background: var(--color-danger-hover);
+}
+
+.buit {
+    padding: 2rem;
+    color: var(--text-light);
+    text-align: center;
+    font-style: italic;
+}
+
+.missatge {
+    min-height: 1.4rem;
+    margin-top: .85rem;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.missatge.error {
+    color: var(--color-danger);
+}
+
+.missatge.exit {
+    color: var(--color-success);
+}
+
+.estadistiques {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.estadistiques p {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.estadistiques span {
+    color: var(--text-light);
+    font-size: .85rem;
+}
+
+.estadistiques strong {
+    color: var(--color-primary);
+    font-size: 1.35rem;
+}
+
+.footer {
+    padding: 1.5rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+@media (max-width: 780px) {
+    .formulari,
+    .eines,
+    .descompte {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .formulari button,
+    .descompte button {
+        width: 100%;
+    }
+
+    .descompte .camp {
+        width: 100%;
+    }
+
+    .producte {
+        grid-template-columns: 1fr auto;
+    }
+
+    .producte .detall {
+        grid-column: 1;
+        white-space: normal;
+    }
+
+    .btn-eliminar {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+    }
+}
+
+@media (max-width: 520px) {
+    .header {
+        padding: 2rem 1rem;
+    }
+
+    .contenidor {
+        width: min(94%, 1000px);
+        margin: 1rem auto;
+        gap: 1rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .capcalera {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .producte {
+        grid-template-columns: 1fr auto;
+    }
+
+    .estadistiques {
+        grid-template-columns: 1fr;
+    }
+}

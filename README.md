@@ -21,6 +21,12 @@ Aplicació de consola en Node.js per gestionar un inventari. A diferència de la
 
 ## Instal·lació i ús
 
+### Versió web
+
+Obre `index.html` en un navegador. La interfície conserva els productes al navegador i permet afegir, buscar, filtrar, aplicar descomptes i eliminar productes.
+
+### Versió de consola
+
 ```bash
 npm install
 npm start
